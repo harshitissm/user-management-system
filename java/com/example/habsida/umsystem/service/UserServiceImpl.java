@@ -1,5 +1,6 @@
 package com.example.habsida.umsystem.service;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
@@ -79,39 +80,13 @@ public class UserServiceImpl implements UserService {
 		return userRepository.findById(id).get();
 	}
 
-//	@Override
-//	public void updateUser(UserRegistrationDto userRegistrationDto, Long id) {
-//		
-//		User existingUser = userRepository.findById(id).get();;
-//		existingUser.setId(id);
-//		existingUser.setFirstName(userRegistrationDto.getFirstName());
-//		existingUser.setLastName(userRegistrationDto.getLastName());
-//		existingUser.setAge(userRegistrationDto.getAge());
-//		existingUser.setEmail(userRegistrationDto.getEmail());
-//		existingUser.setPassword(passwordEncoder.encode(userRegistrationDto.getPassword()));
-//		
-//		userRepository.save(existingUser);
-//	}
-
 	@Override
 	public void deleteStudentById(Long id) {
 		userRepository.deleteById(id);
 	}
 
 	@Override
-	public UserRegistrationDto userToDto(User user) {
-		
-		UserRegistrationDto userRegistrationDto = new UserRegistrationDto();
-		userRegistrationDto.setFirstName(user.getFirstName());
-		userRegistrationDto.setLastName(user.getLastName());
-		userRegistrationDto.setAge(user.getAge());
-		userRegistrationDto.setEmail(user.getEmail());
-		userRegistrationDto.setRole(user.getRoles().get(0).getName());
-		return userRegistrationDto;
-	}
-
-	@Override
-	public User updateUser(User user) {
+	public User updateUser(User user, String role) {
 		
 		User existingUser = userRepository.findById(user.getId()).get();
 		existingUser.setId(user.getId());
@@ -121,8 +96,20 @@ public class UserServiceImpl implements UserService {
 		existingUser.setEmail(user.getEmail());
 		existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
 		
+		Role roles = roleRepository.findByName(role);
+		List<Role> list = new ArrayList<>();
+		list.add(roles);
+		existingUser.setRoles(list);
+		
 		return userRepository.save(existingUser);
 
+	}
+
+	@Override
+	public List<User> getOnlyUsers() {
+		
+		Role role = roleRepository.findByName("USER");
+		return userRepository.findAllByRoles(role);
 	}
 
 }

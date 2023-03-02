@@ -5,13 +5,12 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.habsida.umsystem.dto.UserRegistrationDto;
 import com.example.habsida.umsystem.service.UserService;
 
 @Controller
-@RequestMapping("/registration")
+//@RequestMapping("/registration")
 public class UserRegistrationController {
 
 	private UserService userService;
@@ -35,7 +34,7 @@ public class UserRegistrationController {
 	@PostMapping
 	public String registrationUserAccount(@ModelAttribute("user") UserRegistrationDto registratoinDto) {
 		userService.save(registratoinDto);
-		return "redirect:/";
+		return "redirect:/admin";
 	}
 }
 

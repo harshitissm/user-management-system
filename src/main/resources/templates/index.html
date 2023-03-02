@@ -10,7 +10,12 @@
       href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
     />
     
+    <!-- <link type="text/css"
+		  rel="stylesheet" 
+		  href="${pageContext.request.contextPath}/index.css"/> -->
+    
     <style type="text/css">
+    
 		     .sidebar {
 			  margin: 0;
 			  padding-top: 15px;
@@ -47,7 +52,16 @@
 			  padding: 1px 16px;
 			  height: 1000px;
 			}
+			caption {
+			  caption-side: top;
+			  color: black;
+			  font-family: Verdana;
+			}
     </style>
+    
+    <script>
+    	var showAdminTable = true
+    </script>
    
   </head>
 
@@ -57,18 +71,19 @@
       <a class="mr-2 text-white">
             <span sec:authentication="principal.username" class="text-white" style="font-weight: bold"></span>
      			 with roles: ADMIN USER</a>
-      <a class="mr-2 text-white" th:href="@{/logout}">Logout</a>
+      <a class="mr-2" th:href="@{/login}" style="color: #808080">Logout</a>
     </nav>
 
 	<div class="sidebar">
-	  <a class="active" th:href="@{/}">Admin</a>
-	  <a th:href="@{/user}">User</a>
+	  <a class="active">Admin</a>
+	  <a >User</a>
 	</div>
 	
 	<div class ="content">
+	
     <!-- add our html table here  -->
 
-    <div class="container">
+    <div class="container"> 
       <div class="row">
         <h1>Admin panel</h1>
       </div>
@@ -82,12 +97,13 @@
       </div>
 
       <table class="table table-striped table-bordered">
+        <caption align="top">All users</caption>
         <thead class="table-dark">
           <tr>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
             <th>Age</th>
+            <th>Email</th>
             <th>Role</th>
             <th>Edit</th>
             <th>Delete</th>
@@ -118,5 +134,65 @@
       </table>
     </div>
    </div>
+   
+   <div class ="content">
+    <!-- add our html table here  -->
+
+    <div class="container">
+      <div class="row">
+        <h1>User information-page</h1>
+      </div>
+
+      <table class="table table-striped table-bordered">
+      	<caption align="top">About user</caption>
+        <thead class="table-dark">
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Email</th>
+            <th>Role</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each="user: ${userss}">
+            <td th:text="${user.firstName}"></td>
+            <td th:text="${user.lastName}"></td>
+            <td th:text="${user.age}"></td>
+            <td th:text="${user.email}"></td>
+            <td th:text="${user.roles.get(0).getName()}"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    </div>
+   
+   
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

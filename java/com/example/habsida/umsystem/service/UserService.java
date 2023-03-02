@@ -13,14 +13,12 @@ public interface UserService extends UserDetailsService{
 	
 	public List<User> getAllUsers();
 	
+	public List<User> getOnlyUsers();
+	
 	User getUserById(Long id);
 	
-	User updateUser(User user);
+	User updateUser(User user, String role);
 	
 	void deleteStudentById(Long id);
-
-	UserRegistrationDto userToDto(User user);
-
-//	void updateUser(UserRegistrationDto userRegistrationDto, Long id);
 
 }
