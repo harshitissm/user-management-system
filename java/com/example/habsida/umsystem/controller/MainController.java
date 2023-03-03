@@ -1,5 +1,8 @@
 package com.example.habsida.umsystem.controller;
 
+import java.security.Principal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.habsida.umsystem.dto.UserRegistrationDto;
 import com.example.habsida.umsystem.model.User;
+import com.example.habsida.umsystem.repository.UserRepository;
 import com.example.habsida.umsystem.service.UserService;
 
 @Controller
@@ -17,6 +21,9 @@ import com.example.habsida.umsystem.service.UserService;
 public class MainController {
 
 	private UserService userService; 
+	
+	@Autowired	
+	private UserRepository userRepository;
 	
 	
 //   @Autowired
@@ -79,12 +86,14 @@ public class MainController {
 	}
 	
 	@GetMapping("/admin")
-	public String listUsers(Model theModel) {
+	public String listUsers(Model theModel, Principal principal) {
 		
+		String userEmail = principal.getName();
+			
 		
 		theModel.addAttribute("users", userService.getAllUsers());
 		
-		theModel.addAttribute("userss", userService.getOnlyUsers());
+		theModel.addAttribute("userss", userRepository.findByEmail(userEmail));
 		
 		theModel.addAttribute("userDto", new UserRegistrationDto());
 
