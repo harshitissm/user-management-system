@@ -1,4 +1,4 @@
-package com.example.habsida.umsystem.model;
+package com.example.umsystem.model;
 
 import java.util.Collection;
 import java.util.List;

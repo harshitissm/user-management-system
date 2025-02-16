@@ -1,4 +1,4 @@
-package com.example.habsida.umsystem.service;
+package com.example.umsystem.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -15,11 +15,11 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import com.example.habsida.umsystem.dto.UserRegistrationDto;
-import com.example.habsida.umsystem.model.Role;
-import com.example.habsida.umsystem.model.User;
-import com.example.habsida.umsystem.repository.RoleRepository;
-import com.example.habsida.umsystem.repository.UserRepository;
+import com.example.umsystem.dto.UserRegistrationDto;
+import com.example.umsystem.model.Role;
+import com.example.umsystem.model.User;
+import com.example.umsystem.repository.RoleRepository;
+import com.example.umsystem.repository.UserRepository;
 
 @Service
 public class UserServiceImpl implements UserService {

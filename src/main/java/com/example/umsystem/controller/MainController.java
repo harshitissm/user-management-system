@@ -1,4 +1,4 @@
-package com.example.habsida.umsystem.controller;
+package com.example.umsystem.controller;
 
 import java.security.Principal;
 
@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.example.habsida.umsystem.dto.UserRegistrationDto;
-import com.example.habsida.umsystem.model.User;
-import com.example.habsida.umsystem.repository.UserRepository;
-import com.example.habsida.umsystem.service.UserService;
+import com.example.umsystem.dto.UserRegistrationDto;
+import com.example.umsystem.model.User;
+import com.example.umsystem.repository.UserRepository;
+import com.example.umsystem.service.UserService;
 
 @Controller
 //@RequestMapping("/user")

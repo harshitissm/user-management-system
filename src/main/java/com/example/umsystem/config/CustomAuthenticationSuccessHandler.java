@@ -1,4 +1,4 @@
-package com.example.habsida.umsystem.config;
+package com.example.umsystem.config;
 
 import java.io.IOException;
 import java.util.Set;

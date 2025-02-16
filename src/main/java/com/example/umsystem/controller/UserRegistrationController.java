@@ -1,4 +1,4 @@
-package com.example.habsida.umsystem.controller;
+package com.example.umsystem.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -6,8 +6,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.example.habsida.umsystem.dto.UserRegistrationDto;
-import com.example.habsida.umsystem.service.UserService;
+import com.example.umsystem.dto.UserRegistrationDto;
+import com.example.umsystem.service.UserService;
 
 @Controller
 //@RequestMapping("/registration")
